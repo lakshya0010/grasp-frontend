@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ReactFlow, Controls, Background} from '@xyflow/react'
+import { ReactFlow, Controls, Background, MarkerType} from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 
 function App() {
@@ -32,7 +32,8 @@ function App() {
     const rfEdges = data.subgraph.edges.map((edge, index) => ({
       id: `e-${index}`,
       source: String(edge.caller_id ?? edge.caller),
-      target: String(edge.callee_id ?? edge.callee)
+      target: String(edge.callee_id ?? edge.callee),
+      markerEnd: { type: MarkerType.ArrowClosed }
     }))
 
     setFlowNodes(rfNodes)
